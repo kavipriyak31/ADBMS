@@ -4,7 +4,7 @@
 
 -- 1. CREATE TABLE
 
-CREATE TABLE employee_subquery (
+CREATE TABLE staff_subquery (
     emp_id NUMBER,
     emp_name VARCHAR2(30),
     salary NUMBER,
@@ -14,28 +14,18 @@ CREATE TABLE employee_subquery (
 
 -- 2. INSERT VALUES
 
-INSERT INTO employee_subquery
-VALUES (1, 'Priya', 30000, 101);
-
-INSERT INTO employee_subquery
-VALUES (2, 'Arun', 40000, 102);
-
-INSERT INTO employee_subquery
-VALUES (3, 'Ravi', 50000, 101);
-
-INSERT INTO employee_subquery
-VALUES (4, 'Kumar', 35000, 103);
-
-INSERT INTO employee_subquery
-VALUES (5, 'Anu', 45000, 102);
+INSERT INTO staff_subquery VALUES (1, 'Priya', 30000, 101);
+INSERT INTO staff_subquery VALUES (2, 'Arun', 40000, 102);
+INSERT INTO staff_subquery VALUES (3, 'Ravi', 50000, 101);
+INSERT INTO staff_subquery VALUES (4, 'Kumar', 35000, 103);
+INSERT INTO staff_subquery VALUES (5, 'Anu', 45000, 102);
 
 COMMIT;
 
 
 -- 3. DISPLAY ALL RECORDS
 
-SELECT * FROM employee_subquery;
-
+SELECT * FROM staff_subquery;
 
 -- =========================================
 -- 1. NESTED SUBQUERY
@@ -43,12 +33,7 @@ SELECT * FROM employee_subquery;
 -- than average salary
 -- =========================================
 
-SELECT emp_id, emp_name, salary
-FROM employee_subquery
-WHERE salary > (
-    SELECT AVG(salary)
-    FROM employee_subquery
-);
+SELECT emp_id, emp_name, salary FROM staff_subquery WHERE salary > ( SELECT AVG(salary)  FROM staff_subquery );
 
 
 -- =========================================
@@ -57,13 +42,7 @@ WHERE salary > (
 -- department as Priya
 -- =========================================
 
-SELECT emp_id, emp_name, dept_id
-FROM employee_subquery
-WHERE dept_id = (
-    SELECT dept_id
-    FROM employee_subquery
-    WHERE emp_name = 'Priya'
-);
+SELECT emp_id, emp_name, dept_id FROM staff_subquery WHERE dept_id = ( SELECT dept_id FROM staff_subqueryWHERE emp_name = 'Priya');
 
 
 -- =========================================
@@ -71,12 +50,7 @@ WHERE dept_id = (
 -- Employee with the highest salary
 -- =========================================
 
-SELECT emp_id, emp_name, salary
-FROM employee_subquery
-WHERE salary = (
-    SELECT MAX(salary)
-    FROM employee_subquery
-);
+SELECT emp_id, emp_name, salary FROM staff_subquery WHERE salary = ( SELECT MAX(salary) FROM staff_subquery );
 
 
 -- =========================================
@@ -84,9 +58,4 @@ WHERE salary = (
 -- Employee with the lowest salary
 -- =========================================
 
-SELECT emp_id, emp_name, salary
-FROM employee_subquery
-WHERE salary = (
-    SELECT MIN(salary)
-    FROM employee_subquery
-);
+SELECT emp_id, emp_name, salary FROM staff_subquery WHERE salary = ( SELECT MIN(salary) FROM staff_subquery );
