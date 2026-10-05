@@ -1,11 +1,11 @@
 -- CREATE TABLE
 
-CREATE TABLE course (
+CREATE TABLE subject (
     course_id NUMBER,
     course_name VARCHAR2(30)
 );
 
-CREATE TABLE learner (
+CREATE TABLE student (
     learner_id NUMBER,
     learner_name VARCHAR2(30),
     email VARCHAR2(50),
@@ -15,39 +15,39 @@ CREATE TABLE learner (
 
 -- INSERT VALUES
 
-INSERT INTO course VALUES (201, 'Information Technology');
-INSERT INTO course VALUES (202, 'Business Management');
+INSERT INTO subject VALUES (201, 'Information Technology');
+INSERT INTO subject VALUES (202, 'Business Management');
 
-INSERT INTO learner VALUES (1, 'Meena', 'meena@gmail.com', 19, 201);
-INSERT INTO learner VALUES (2, 'Rahul', 'rahul@gmail.com', 22, 202);
+INSERT INTO student VALUES (1, 'Meena', 'meena@gmail.com', 19, 201);
+INSERT INTO student VALUES (2, 'Rahul', 'rahul@gmail.com', 22, 202);
 
 COMMIT;
 
 -- PRIMARY KEY
 
-ALTER TABLE learner
-ADD CONSTRAINT pk_learner
+ALTER TABLE student
+ADD CONSTRAINT pk_student
 PRIMARY KEY (learner_id);
 
 -- UNIQUE
 
-ALTER TABLE learner
-ADD CONSTRAINT uq_learner_email
+ALTER TABLE student
+ADD CONSTRAINT uq_student_email
 UNIQUE (email);
 
 -- FOREIGN KEY
 
-ALTER TABLE learner
-ADD CONSTRAINT fk_learner_course
+ALTER TABLE student
+ADD CONSTRAINT fk_student_course
 FOREIGN KEY (course_id)
-REFERENCES course(course_id);
+REFERENCES subject(course_id);
 
 -- CHECK
 
-ALTER TABLE learner
-ADD CONSTRAINT chk_learner_age
+ALTER TABLE student
+ADD CONSTRAINT chk_student_age
 CHECK (age >= 18);
 
 -- SELECT
 
-SELECT * FROM learner;
+SELECT * FROM student;
