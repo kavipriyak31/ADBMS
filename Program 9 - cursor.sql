@@ -5,9 +5,9 @@ create table customer (
     salary number
 );
 
-insert into customer values (1, 'savitha', 'pondy', 20000);
-insert into customer values (2, 'priya', 'villupuram', 25000);
-insert into customer values (3, 'gaja', 'chennai', 30000);
+insert into customer values (1, 'kavi', 'pondy', 20000);
+insert into customer values (2, 'gloria', 'villupuram', 25000);
+insert into customer values (3, 'bharathi', 'chennai', 30000);
 
 select * from customer;
 
