@@ -1,2 +1,2 @@
-DROP TABLE emp_details;
+DROP TABLE IF EXISTS emp_details;
 
